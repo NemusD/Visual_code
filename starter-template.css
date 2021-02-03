@@ -9,10 +9,15 @@ body {
 
 }
 
-.bg-dark {
+.container {
   background-color: #0d56a0!important;
 }
 
 .searchtextinput{
   padding-top: 50px;
+}
+
+#searchtextinput{
+  margin-top: 0%;
+  background-color: blue;
 }

@@ -1,3 +1,18 @@
 body {
   padding-top: 5rem;
 }
+
+.Lider_logo {
+  color: aquamarine;
+  padding-left: 60px;
+  padding-right: 60px;
+
+}
+
+.bg-dark {
+  background-color: #0d56a0!important;
+}
+
+.searchtextinput{
+  padding-top: 50px;
+}

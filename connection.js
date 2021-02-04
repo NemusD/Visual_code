@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const uri      = 'mongodb://localhost/promotions';
-const config   = { useNewUrlParser: true, useUnifiedTopology: true };
+const uri      = 'mongodb://localhost/promotions?authentication=admin';
+const config   = { user:"productListUser", pass:"productListPassword", useNewUrlParser: true, useUnifiedTopology: true };
 const db       = mongoose.connection;
 
 mongoose.connect(uri,config)

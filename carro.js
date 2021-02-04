@@ -8,7 +8,7 @@ let $botonVaciar = document.querySelector('#boton-vaciar');
 
 // Funciones
 function renderItems() {
-    for (let info of baseDeDatos) {
+    for (let info of product.json) {
         // Estructura
         let miNodo = document.createElement('div');
         miNodo.classList.add('card', 'col-sm-4');
@@ -18,15 +18,15 @@ function renderItems() {
         // Titulo
         let miNodoTitle = document.createElement('h5');
         miNodoTitle.classList.add('card-title');
-        miNodoTitle.textContent = info['nombre'];
+        miNodoTitle.textContent = info['brand'];
         // Imagen
         let miNodoImagen = document.createElement('img');
         miNodoImagen.classList.add('img-fluid');
-        miNodoImagen.setAttribute('src', info['imagen']);
+        miNodoImagen.setAttribute('src', info['image']);
         // Precio
         let miNodoPrecio = document.createElement('p');
         miNodoPrecio.classList.add('card-text');
-        miNodoPrecio.textContent = info['precio'] + '$';
+        miNodoPrecio.textContent = info['price'] + '$';
         // Boton 
         let miNodoBoton = document.createElement('button');
         miNodoBoton.classList.add('btn', 'btn-primary');
@@ -61,8 +61,8 @@ function renderizarCarrito() {
     // Generamos los Nodos a partir de carrito
     carritoSinDuplicados.forEach(function (item, indice) {
         // Obtenemos el item que necesitamos de la variable base de datos
-        let miItem = baseDeDatos.filter(function(itemBaseDatos) {
-            return itemBaseDatos['id'] == item;
+        let miItem = product.json.filter(function(itemproduct) {
+            return itemproduct.json['id'] == item;
         });
         // Cuenta el número de veces que se repite el producto
         let numeroUnidadesItem = carrito.reduce(function (total, itemId) {
@@ -71,7 +71,7 @@ function renderizarCarrito() {
         // Creamos el nodo del item del carrito
         let miNodo = document.createElement('li');
         miNodo.classList.add('list-group-item', 'text-right', 'mx-2');
-        miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0]['nombre']} - ${miItem[0]['precio']}€`;
+        miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0]['brand']} - ${miItem[0]['price']}$`;
         // Boton de borrar
         let miBoton = document.createElement('button');
         miBoton.classList.add('btn', 'btn-danger', 'mx-5');
@@ -104,8 +104,8 @@ function calcularTotal() {
     // Recorremos el array del carrito
     for (let item of carrito) {
         // De cada elemento obtenemos su precio
-        let miItem = baseDeDatos.filter(function(itemBaseDatos) {
-            return itemBaseDatos['id'] == item;
+        let miItem = baseDeDatos.filter(function(itemproduct) {
+            return itemproduct['id'] == item;
         });
         total = total + miItem[0]['price']* 1.50;
     }

@@ -1,11 +1,4 @@
 const { response } = require("express");
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true, useUnifiedTopology: true});
-
-const db = mongoose.connect;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function(){
-})
 
 //Ingresar usuario
 exports.login = async function (email, password){
@@ -56,22 +49,27 @@ exports.searchPalindrome = async function (req, res) {
     }
     return res.palabra;
     };
-    if (texto()){
+    /* if (texto()){
         alert("Eso es palíndromo");
     }else {
         alert("Esto no es un palíndromo")
-    }
-    const obj = products.json
+    } */
+    const requestURL = 'https://github.com/walmartdigital/products-db/blob/master/database/01-products.json'
     let data_brand = [];
     let data_description = [];
 
-    Object.keys(obj[0]).forEach( e => {
-        data_brand.push(obj[0][e].brand);
-        data_description.push(obj[0[e]].description);
+    Object.keys(requestURL[0]).forEach( e => {
+        data_brand.push(requestURL[0][e].brand);
+        //data_description.push(requestURL[0[e]].description);
     });
+exports.descuento = async function(req, res){
+    res.send(calcularTotal)
+};
+
 
 module.exports = {
     login,
     createUser,
     searchPalindrome,
+    descuento,
 }

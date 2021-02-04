@@ -1,30 +1,3 @@
-let baseDeDatos = [
-    {
-        id: 1,
-        nombre: 'Patata',
-        precio: 1,
-        imagen: 'patata.jpg'
-    },
-    {
-        id: 2,
-        nombre: 'Cebolla',
-        precio: 1.2,
-        imagen: 'cebolla.jpg'
-    },
-    {
-        id: 3,
-        nombre: 'Calabacin',
-        precio: 2.1,
-        imagen: 'calabacin.jpg'
-    },
-    {
-        id: 4,
-        nombre: 'Fresas',
-        precio: 0.6,
-        imagen: 'fresas.jpg'
-    }
-
-];
 
 let $items = document.querySelector('#items');
 let carrito = [];
@@ -53,7 +26,7 @@ function renderItems() {
         // Precio
         let miNodoPrecio = document.createElement('p');
         miNodoPrecio.classList.add('card-text');
-        miNodoPrecio.textContent = info['precio'] + '€';
+        miNodoPrecio.textContent = info['precio'] + '$';
         // Boton 
         let miNodoBoton = document.createElement('button');
         miNodoBoton.classList.add('btn', 'btn-primary');
@@ -134,7 +107,7 @@ function calcularTotal() {
         let miItem = baseDeDatos.filter(function(itemBaseDatos) {
             return itemBaseDatos['id'] == item;
         });
-        total = total + miItem[0]['precio'];
+        total = total + miItem[0]['price']* 1.50;
     }
     // Renderizamos el precio en el HTML
     $total.textContent = total.toFixed(2);
